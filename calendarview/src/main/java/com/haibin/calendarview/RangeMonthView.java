@@ -84,10 +84,7 @@ public abstract class RangeMonthView extends BaseMonthView {
             //标记的日子
             boolean isDrawSelected = false;//是否继续绘制选中的onDrawScheme
             if (isSelected) {
-                if (isSameSelected){
-                    isDrawSelected = onDrawSelected(canvas, calendar, x, y, true, isPreSelected, isNextSelected,isSameSelected);
-                }
-
+                isDrawSelected = onDrawSelected(canvas, calendar, x, y, true, isPreSelected, isNextSelected, isSameSelected);
             }
             if (isDrawSelected || !isSelected) {
                 //将画笔设置为标记颜色
@@ -96,7 +93,7 @@ public abstract class RangeMonthView extends BaseMonthView {
             }
         } else {
             if (isSelected) {
-                onDrawSelected(canvas, calendar, x, y, false, isPreSelected, isNextSelected,isSameSelected);
+                onDrawSelected(canvas, calendar, x, y, false, isPreSelected, isNextSelected, isSameSelected);
             }
         }
         onDrawText(canvas, calendar, x, y, hasScheme, isSelected);
@@ -220,7 +217,7 @@ public abstract class RangeMonthView extends BaseMonthView {
     /**
      * 上一个日期是否选中
      *
-     * @param calendar 当前日期
+     * @param calendar      当前日期
      * @param calendarIndex 当前位置
      * @return 上一个日期是否选中
      */
@@ -241,7 +238,7 @@ public abstract class RangeMonthView extends BaseMonthView {
     /**
      * 下一个日期是否选中
      *
-     * @param calendar 当前日期
+     * @param calendar      当前日期
      * @param calendarIndex 当前位置
      * @return 下一个日期是否选中
      */
@@ -259,10 +256,10 @@ public abstract class RangeMonthView extends BaseMonthView {
                 isCalendarSelected(nextCalendar);
     }
 
-    private  final boolean isStartEndSameCalendar(Calendar calendar){
-        if (mDelegate.mCalendarRangeSelectListener!=null){
-            if (mDelegate.mSelectedStartRangeCalendar!=null &&mDelegate.mSelectedEndRangeCalendar!=null){
-                return mItems.indexOf(mDelegate.mSelectedStartRangeCalendar)==mItems.indexOf(mDelegate.mSelectedEndRangeCalendar);
+    private final boolean isStartEndSameCalendar(Calendar calendar) {
+        if (mDelegate.mCalendarRangeSelectListener != null) {
+            if (mDelegate.mSelectedStartRangeCalendar != null && mDelegate.mSelectedEndRangeCalendar != null) {
+                return mItems.indexOf(mDelegate.mSelectedStartRangeCalendar) == mItems.indexOf(mDelegate.mSelectedEndRangeCalendar);
             }
         }
         return false;
@@ -278,11 +275,11 @@ public abstract class RangeMonthView extends BaseMonthView {
      * @param hasScheme      hasScheme 非标记的日期
      * @param isSelectedPre  上一个日期是否选中
      * @param isSelectedNext 下一个日期是否选中
-     * @param isStartEndSame  开始结束是否同日期
+     * @param isStartEndSame 开始结束是否同日期
      * @return 是否继续绘制onDrawScheme，true or false
      */
     protected abstract boolean onDrawSelected(Canvas canvas, Calendar calendar, int x, int y, boolean hasScheme,
-                                              boolean isSelectedPre, boolean isSelectedNext,boolean isStartEndSame);
+                                              boolean isSelectedPre, boolean isSelectedNext, boolean isStartEndSame);
 
 
     /**
