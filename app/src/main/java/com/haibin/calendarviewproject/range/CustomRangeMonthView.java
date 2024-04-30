@@ -28,8 +28,7 @@ public class CustomRangeMonthView extends RangeMonthView {
     }
 
     @Override
-    protected boolean onDrawSelected(Canvas canvas, Calendar calendar, int x, int y, boolean hasScheme,
-                                     boolean isSelectedPre, boolean isSelectedNext) {
+    protected boolean onDrawSelected(Canvas canvas, Calendar calendar, int x, int y, boolean hasScheme, boolean isSelectedPre, boolean isSelectedNext, boolean isSelectedEnd) {
         int cx = x + mItemWidth / 2;
         int cy = y + mItemHeight / 2;
         if (isSelectedPre) {
@@ -47,11 +46,6 @@ public class CustomRangeMonthView extends RangeMonthView {
             //
         }
 
-        return false;
-    }
-
-    @Override
-    protected boolean onDrawSelected(Canvas canvas, Calendar calendar, int x, int y, boolean hasScheme, boolean isSelectedPre, boolean isSelectedNext, boolean isSelectedEnd) {
         return false;
     }
 

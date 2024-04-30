@@ -84,7 +84,10 @@ public abstract class RangeMonthView extends BaseMonthView {
             //标记的日子
             boolean isDrawSelected = false;//是否继续绘制选中的onDrawScheme
             if (isSelected) {
-                isDrawSelected = onDrawSelected(canvas, calendar, x, y, true, isPreSelected, isNextSelected,isSameSelected);
+                if (isSameSelected){
+                    isDrawSelected = onDrawSelected(canvas, calendar, x, y, true, isPreSelected, isNextSelected,isSameSelected);
+                }
+
             }
             if (isDrawSelected || !isSelected) {
                 //将画笔设置为标记颜色
@@ -265,7 +268,6 @@ public abstract class RangeMonthView extends BaseMonthView {
         return false;
     }
 
-
     /**
      * 绘制选中的日期
      *
@@ -276,22 +278,7 @@ public abstract class RangeMonthView extends BaseMonthView {
      * @param hasScheme      hasScheme 非标记的日期
      * @param isSelectedPre  上一个日期是否选中
      * @param isSelectedNext 下一个日期是否选中
-     * @return 是否继续绘制onDrawScheme，true or false
-     */
-    protected abstract boolean onDrawSelected(Canvas canvas, Calendar calendar, int x, int y, boolean hasScheme,
-                                              boolean isSelectedPre, boolean isSelectedNext);
-
-    /**
-     * 绘制选中的日期
-     *
-     * @param canvas         canvas
-     * @param calendar       日历日历calendar
-     * @param x              日历Card x起点坐标
-     * @param y              日历Card y起点坐标
-     * @param hasScheme      hasScheme 非标记的日期
-     * @param isSelectedPre  上一个日期是否选中
-     * @param isSelectedNext 下一个日期是否选中
-     * @param isStartEndSame  是否是结束日期
+     * @param isStartEndSame  开始结束是否同日期
      * @return 是否继续绘制onDrawScheme，true or false
      */
     protected abstract boolean onDrawSelected(Canvas canvas, Calendar calendar, int x, int y, boolean hasScheme,

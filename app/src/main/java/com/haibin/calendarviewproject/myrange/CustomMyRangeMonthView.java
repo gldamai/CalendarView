@@ -25,11 +25,6 @@ public class CustomMyRangeMonthView extends RangeMonthView {
     }
 
     @Override
-    protected boolean onDrawSelected(Canvas canvas, Calendar calendar, int x, int y, boolean hasScheme, boolean isSelectedPre, boolean isSelectedNext) {
-        return false;
-    }
-
-    @Override
     protected void onPreviewHook() {
         mRadius = Math.max(mItemWidth, mItemHeight) / 5 * 2f;
         mSchemePaint.setStyle(Paint.Style.STROKE);
